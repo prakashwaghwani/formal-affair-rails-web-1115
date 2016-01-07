@@ -4,6 +4,7 @@ class ConcretesController < ApplicationController
   end
 
   def create
+    @concrete = Concrete.create(concrete_params)
     render nothing: true
   end
 
@@ -13,5 +14,9 @@ class ConcretesController < ApplicationController
 
   def update
     render nothing: true
+  end
+
+  def concrete_params
+    params.require(:concrete).permit(:mix_type, :color, :psi, :cost_per_yard)
   end
 end
